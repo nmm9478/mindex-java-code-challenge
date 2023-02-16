@@ -5,7 +5,7 @@ import java.time.Instant;
 public class Compensation {
 
     private Employee employee;
-    private String salary;
+    private Float salary;
     private Instant effectiveDate;
 
     public Compensation() {
@@ -19,11 +19,11 @@ public class Compensation {
         this.employee = employee;
     }
 
-    public String getSalary() {
+    public Float getSalary() {
         return this.salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(Float salary) {
         this.salary = salary;
     }
 
