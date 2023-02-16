@@ -1,6 +1,7 @@
 package com.mindex.challenge.data;
-
+import com.mindex.challenge.service.EmployeeService;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Employee {
     private String employeeId;
@@ -12,6 +13,7 @@ public class Employee {
 
     public Employee() {
     }
+
 
     public String getEmployeeId() {
         return employeeId;
@@ -54,9 +56,25 @@ public class Employee {
     }
 
     public List<Employee> getDirectReports() {
+        
         return directReports;
     }
 
+
+    public void fillInDirectReports(EmployeeService employeeRep){
+        if (this.directReports == null){
+            return;
+        }
+        List<Employee> fullReports = new ArrayList();
+        for (int i=0; i < directReports.size(); i++){
+            Employee employee = directReports.get(i);
+            Employee fullEmployee = employeeRep.read(employee.employeeId);
+            System.out.println(fullEmployee);
+            fullReports.add(fullEmployee);
+        }
+        this.directReports = fullReports;
+
+    }
     public void setDirectReports(List<Employee> directReports) {
         this.directReports = directReports;
     }

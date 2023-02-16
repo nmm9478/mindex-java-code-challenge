@@ -38,6 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new RuntimeException("Invalid employeeId: " + id);
         }
 
+        employee.fillInDirectReports(this);
         return employee;
     }
 
