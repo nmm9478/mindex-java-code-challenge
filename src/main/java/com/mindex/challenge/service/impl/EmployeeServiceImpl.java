@@ -51,14 +51,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public int getNumberOfReports(String employeeId) {
         
-
+        // note:
+        // It is assumed that there won't be someone reporting to multiple people...
+        //  (referring to 'distinct reports' in README.)
+        
         Employee employee = this.read(employeeId);
 
         if (employee == null) {
             throw new RuntimeException("Employee not found.");
         }
-
+        
         int reportsCount = 0;
+
         List<Employee> directReports = employee.getDirectReports();
         if (directReports != null) {
             for (Employee employeeReporting : directReports) {
